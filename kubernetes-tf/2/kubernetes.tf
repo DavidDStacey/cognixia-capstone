@@ -45,12 +45,12 @@ provider "kubernetes" {
 resource "kubernetes_namespace" "prod-ns" {
   metadata {
     annotations = {
-      name = "prod"
+      name = "production"
     }
     labels = {
-      env = "prod"
+      env = "production"
     }
-    name = "prod"
+    name = "production"
   }
 }
 
