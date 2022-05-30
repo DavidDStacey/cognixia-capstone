@@ -1,0 +1,71 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  imageRepo: sampleapp
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: Docker@2
+      displayName: Build and push image
+      inputs:
+        containerRegistry: 'acr-con'
+        repository: '$(imageRepo)'
+        command: 'buildAndPush'
+        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: |
+          $(Build.BuildId)
+          latest
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/s/kube-manifests'
+        artifact: 'manifests'
+        publishLocation: 'pipeline'
+
+- stage: Deploy
+  displayName: Deploy to dev
+  dependsOn: Build
+  variables:
+    acr-prod-secret: secret-var
+  jobs: 
+  - job: Deploy
+    displayName: Deploy to AKS
+    pool:
+      vmimage: ubuntu-latest
+    steps: 
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          buildType: 'current'
+          artifactName: 'manifests'
+          targetPath: '$(Pipeline.Workspace)/manifests'
+      - task: KubernetesManifest@0
+        inputs:
+          action: 'createSecret'
+          kubernetesServiceConnection: 'aks-prod'
+          namespace: 'production'
+          secretType: 'dockerRegistry'
+          secretName: '$(acr-prod-secret)'
+          dockerRegistryEndpoint: 'acr-con'
+      - task: KubernetesManifest@0
+        inputs:
+          action: 'deploy'
+          kubernetesServiceConnection: 'aks-prod'
+          namespace: 'production'
+          manifests: |
+            $(Pipeline.Workspace)/manifests/01-acr-Deployment.yml 
+            $(Pipeline.Workspace)/manifests/02-acr-LoadBalancer-Service.yml 
