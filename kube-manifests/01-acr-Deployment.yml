@@ -15,8 +15,8 @@ spec:
         app: acrdemo-localdocker
     spec:
       containers:
-        - name: acrforaksdemo
-          image: acrforjwrdemo1.azurecr.io/app1/springbootapp:latest
+        - name: ACRforCapston
+          image: https://hub.docker.com/r/daviddstacey/capstone
           imagePullPolicy: Always
           ports:
             - containerPort: 80
