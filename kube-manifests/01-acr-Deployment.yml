@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ACRforCapstone
-          image: https://hub.docker.com/r/daviddstacey/capstone
+          image: capstoneacr.azurecr.io/springbootapp
           imagePullPolicy: Always
           ports:
             - containerPort: 80
