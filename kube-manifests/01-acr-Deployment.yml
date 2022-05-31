@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: capstonestuff
-          image: https://hub.docker.com/r/daviddstacey/capstone
+          image: capstoneacr123.azurecr.io/capstone-container
           imagePullPolicy: Always
           ports:
             - containerPort: 80
