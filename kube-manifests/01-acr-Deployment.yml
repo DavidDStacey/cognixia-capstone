@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: acrdemo-localdocker-deployment
+  name: capstone-app-deploy
   labels:
-    app: production
+    app: capstone-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: production
+      app: capstone-app
   template:
     metadata:
       labels:
-        app: production
+        app: capstone-app
     spec:
       containers:
-        - name: capstonestuff
+        - name: capstone-app
           image: capstoneacr123.azurecr.io/capstone-container
           imagePullPolicy: Always
           ports:
@@ -25,13 +25,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: acrdemo-localdocker-service
+  name: capstone-app-service
   labels:
-    app: production
+    app: capstone-app
 spec:
   type: LoadBalancer
   selector:
-    app: production
+    app: capstone-app
   ports:
     - port: 80
       targetPort: 80
