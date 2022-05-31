@@ -23,22 +23,22 @@ spec:
               name: springbootapp
           readinessProbe:
             httpGet:
-              path: /
+              path: /ping
               port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 2
+            periodSeconds: 2
           livenessProbe:
             httpGet:
-              path: /
+              path: /ping
               port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 2
+            periodSeconds: 2
           startupProbe:
             httpGet:
-              path: /
+              path: /ping
               port: 8080
-            failureThreshold: 30
-            periodSeconds: 5
+            failureThreshold: 15
+            periodSeconds: 2
 ---
 apiVersion: v1
 kind: Service
