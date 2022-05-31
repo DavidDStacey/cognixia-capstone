@@ -8,7 +8,3 @@ feature request as a new Issue.
 
 For help and questions about using this project, please In order to get support for this repository, please use the link provided below. 
 Make an issue with this link https://github.com/DavidDStacey/cognixia-capstone/issues
-
-Support for this **PROJECT or PRODUCT** is limited to the resources listed above.
-### In order to get support for this repository, please use the link provided below.
-### Make an issue with this link https://github.com/DavidDStacey/cognixia-capstone/issues
