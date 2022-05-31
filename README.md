@@ -19,6 +19,16 @@ Created with:
 
 ## Setup:
 
+Using Terraform you create the kubernetes cluster along with the namespaces: <br/>
+`terraform init`<br/>
+`terraform validate`<br/>
+`terraform plan`<br/>
+`terraform apply`<br/>
+
+Azure is used to store the container in the ACR. <br/>
+AzureDevops is used to create a pipeline that continuously deploys when there are updates to the github repo.
+
+
 Namespaces:
 * [Dev](http://20.118.17.30/ping)
 * [QA](http://20.236.242.139/ping)
