@@ -2,24 +2,25 @@
 
 ## General Info:
 
-The API should be able to do the following: 
-* GET /{any_number} should return the roman numeral equivalent of that number
-* GET /ping should return the static text "pong". This will be used for health check later.
-* GET /version should return the version of the application like v1, v2 etc. This is be hardcoded.
+The application does the following: 
+* GET /{any_number} returns the roman numeral equivalent of that number
+* GET /ping returns the static text "pong".
+* GET /version returns the version of the application.
 
 
 ## Technologies:
 
-This web app is created with:
-* Docker
-* Git/Github
-* Kubernetes
+Created with:
+* Azure
 * AzureDevops
+* Terraform
+* Kubernetes
+* Docker
 
 ## Setup:
 
 Namespaces:
-* Dev
-* QA
-* Staging
-* Prod
+* [Dev](http://20.118.17.30/ping)
+* [QA](http://20.236.242.139/ping)
+* [Staging](http://20.236.242.185/ping)
+* [Prod](http://20.236.243.35/ping)
