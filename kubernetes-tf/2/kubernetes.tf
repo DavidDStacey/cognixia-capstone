@@ -40,6 +40,7 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.azurerm_kubernetes_cluster.cluster.kube_config.0.cluster_ca_certificate)
 }
 
+
 #-------------- CREATE NameSpace -----------------------------------------------------
 
 resource "kubernetes_namespace" "prod-ns" {
