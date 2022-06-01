@@ -70,11 +70,15 @@ metadata:
   name: capstone-ingress-service
   annotations:
     kubernetes.io/ingress.class: nginx  
-spec:  
+spec: 
+  ingressClassName: nginx
   rules:
   - http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: capstone-app-service
-          servicePort: 80
+          service:
+            name: capstone-app-service
+            port:
+              number: 80
