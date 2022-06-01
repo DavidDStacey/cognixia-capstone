@@ -33,4 +33,6 @@ Namespaces:
 * Dev
 * QA
 * Staging
-* Prod]
+* Prod
+
+note: pipeline no longer functions as resources have been taken down
