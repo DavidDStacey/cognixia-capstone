@@ -34,3 +34,5 @@ Namespaces:
 * [QA](http://20.236.242.139/ping)
 * [Staging](http://20.236.242.185/ping)
 * [Prod](http://20.236.243.35/ping)
+
+note: these links are no longer valid
